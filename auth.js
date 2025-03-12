@@ -1,11 +1,10 @@
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
-const JWT_SECRET = process.env.SECRET_KEy;
+const SECRET_KEY = "";
 
 function auth(req, res, next) {
     const token = req.headers.authorization;
 
-    const response = jwt.verify(token,process.env.SECRET_KEy );
+    const response = jwt.verify(token, SECRET_KEY);
 
     if (response) {
         req.userId = response.id;
@@ -19,5 +18,5 @@ function auth(req, res, next) {
 
 module.exports = {
     auth,
-    JWT_SECRET
+    SECRET_KEY
 }
